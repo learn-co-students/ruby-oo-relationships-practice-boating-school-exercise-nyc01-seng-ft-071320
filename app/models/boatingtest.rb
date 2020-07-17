@@ -4,7 +4,7 @@ class BoatingTest
 
     attr_accessor :student, :test_name, :test_status, :instructor
     @@all = []
-    def initilialize(student, test_name, test_status, instructor)
+    def initialize(student, test_name, test_status, instructor)
         @student = student 
         @test_name = test_name 
         @test_status = test_status 
@@ -17,5 +17,3 @@ class BoatingTest
     end
 end
 
-binding.pry
-"shjfbv"
