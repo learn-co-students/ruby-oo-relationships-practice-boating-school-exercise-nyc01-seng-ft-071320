@@ -1,8 +1,9 @@
 class Student
 
-    attr_reader :first_name
+    attr_reader :first_name, :last_name
 
     @@all = []
+
     def initialize(first_name)
         @first_name = first_name
         @@all << self
@@ -16,9 +17,9 @@ class Student
         BoatingTest.new(self, test_name, test_status, instructor)
     end
 
-    def self.find_student(first_name)
+    def self.find_student(student_first_name)
         self.all.find do |student|
-        student.first_name == first_name
+        student.first_name == student_first_name
         end
     end
 
