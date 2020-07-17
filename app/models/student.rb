@@ -24,9 +24,13 @@ class Student
     end
 
     def grade_percentage(first_name)
-        student_record = BoatingTest.all.select do |test| test.student.first_name == first_name end
+        student_record = BoatingTest.all.select do |test| 
+            test.student.first_name == first_name 
+        end
 
-        test_passed = student_record.count do |test| test.test_status == "passed" end
+        test_passed = student_record.count do |test| 
+            test.test_status == "passed" 
+        end
 
         percent = (test_passed.to_f / student_record.count.to_f) * 100
     end
