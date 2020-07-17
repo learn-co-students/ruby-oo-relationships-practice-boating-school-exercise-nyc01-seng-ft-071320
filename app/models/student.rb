@@ -28,4 +28,20 @@ class Student
         end 
     end
 
+    def boating_tests
+        BoatingTest.all.select {|test| test.student == self}
+    end
+
+    def grade_percentage
+        (passed.to_f / total * 100).round(2)
+    end
+
+    def total
+        boating_tests.count
+    end
+
+    def passed
+        boating_tests.count {|test| test.status == 'passed' }
+    end
+
 end
