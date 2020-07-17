@@ -24,6 +24,7 @@ class Instructor
     end
 
     def fail_student(student, boating_test)
+        # Try BoatingTest.all.include?(student && boating_test) instead
         if BoatingTest.all.include?(student) && BoatingTest.all.include?(boating_test)
             test.status = "failed"
         else 
