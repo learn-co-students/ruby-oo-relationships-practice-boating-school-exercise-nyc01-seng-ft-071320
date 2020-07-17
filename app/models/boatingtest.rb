@@ -15,5 +15,11 @@ class BoatingTest
     def self.all 
         @@all 
     end
+
+    def self.find_test(student, test)
+        BoatingTest.all.find do |element| 
+            element.student == student && element.test_name == test.test_name
+        end
+    end
 end
 
