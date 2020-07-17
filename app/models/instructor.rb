@@ -3,9 +3,8 @@ require_relative './boatingtest.rb'
 require_relative './student.rb'
 
 class Instructor
-    attr_accessor
-    attr_reader
-    attr_writer
+    attr_accessor :name
+
     @@all = []
     def initialize(name)
         @name = name

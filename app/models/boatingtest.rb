@@ -1,12 +1,9 @@
 require 'pry'
-#require_relative './boatingtest.rb'
-#require_relative './student.rb'
 
 class Boatingtest
-    attr_reader :student, :boatingTestName, :instructor
-    attr_writer :boatingTestStatus
+    attr_accessor :boatingTestStatus, :student, :boatingTestName, :instructor
     @@all = []
-    def initialize(student, boatingTestName, boatingTestStatus = nil, instructor)
+    def initialize(student, boatingTestName, boatingTestStatus, instructor)
         @student = student
         @boatingTestName = boatingTestName
         @boatingTestStatus = boatingTestStatus

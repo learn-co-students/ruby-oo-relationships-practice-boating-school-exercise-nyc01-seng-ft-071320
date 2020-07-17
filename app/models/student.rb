@@ -2,9 +2,8 @@ require 'pry'
 require_relative './boatingtest.rb'
 require_relative './instructor.rb'
 
-class Student
-    attr_accessor 
-    attr_reader :first_name, :boatingTestName
+class Student 
+    attr_accessor :first_name, :boatingTestName
     @@all = []
     def initialize(first_name)
         @first_name = first_name
@@ -24,27 +23,10 @@ class Student
     end
 
     def grade_percentage
-        #Get boating test status
-        #Get number of passes (String) / boating test status . count
-        arr = Boatingtest.all.select {|scores| scores.student == self}
-        i, passCounter, testCounter = 0
-        binding.pry
-        
-        while i < arr.length do
-            if arr[i].include?('pass')
-                passCounter += 1
-            end
-            if arr[i].include?('TestStatus')
-                testCounter += 1
-            end
-            i+=1
-        end
-        #gradePercentage = arr.boatingTestStatus.count('passes') / arr.boatingTestStatus.length
-        puts "Inside grade percentage. Here is arr + #{arr}"
-    end
-    
-    # spongebob = Student.new("Spongebob")
-    # binding.pry
-    # patrick= Student.new("Patrick")
-
+        studentTests= Boatingtest.all.find_all{|test| test.student.first_name == self.first_name}
+        totalTests= studentTests.length.to_f
+        totalPassed= studentTests.find_all{|test| test.boatingTestStatus == "passed"}
+        numPassed= totalPassed.length.to_f
+        percent= (numPassed/totalTests)*100
+      end
 end
