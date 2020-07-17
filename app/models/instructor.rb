@@ -21,11 +21,21 @@ class Instructor
     end
 
     def pass_student(student, test_title)
-        BoatingTest.all.each do |test|
+        all_tests.map do |test|
             if test.student == student && test.test_name == test_title
                 test.status = 'passed'
             else
                 create_student_test(student, test_title, 'passed')
+            end
+        end
+    end
+
+    def fail_student(student, test_title)
+        all_tests.map do |test|
+            if test.student == student && test.test_name == test_title
+                test.status = 'failed'
+            else
+                create_student_test(student, test_title, 'failed')
             end
         end
     end

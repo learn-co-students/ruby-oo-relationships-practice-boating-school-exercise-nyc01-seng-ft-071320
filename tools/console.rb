@@ -10,7 +10,8 @@ end
 
 spongebob = Student.new("Spongebob")
 patrick= Student.new("Patrick")
- 
+sandy= Student.new("Sandy")
+
 puff= Instructor.new("Ms.Puff")
 krabs= Instructor.new("Mr.Krabs")
  
