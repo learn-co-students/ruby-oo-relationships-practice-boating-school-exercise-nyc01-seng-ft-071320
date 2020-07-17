@@ -13,10 +13,6 @@ class Instructor
         @@all
     end
  
-    # def find_test(student, test)
-    #     BoatingTest.find_by_student_and_name(student, test)
-    # end
-    
     def pass_student(student, test)
         if BoatingTest.find_test(student, test)
             BoatingTest.find_test(student, test).test_status = "passed"
