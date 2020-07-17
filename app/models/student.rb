@@ -32,17 +32,11 @@ class Student
   end
 
   def grade_percentage
-    passed_tests = []
-    find_boating_tests.each do |test|
-      if test.test_status == "passed"
-        passed_tests << test
-      end
-    end
+    passed_tests = find_boating_tests.select {|test| test.test_status == "passed"}
     passed = passed_tests.length
     total = find_boating_tests.length
     percentage = (passed.to_f/total.to_f)*100
     "#{percentage.round(2)}%"
-    #binding.pry
   end
 
 end
