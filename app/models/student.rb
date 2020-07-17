@@ -18,18 +18,11 @@ class Student
     def self.find_student(search_name)
         self.all.find do |student|
             student.first_name == search_name
-
         end
     end
-
-    # def grade_percentage
-    #     BoatingTest.all.count do |tests|
-    #         (tests.boating_test_status == "passed") / (tests.student == self)
-    #     end
-    # end
-
+    
     def grade_percentage
-        (total_pass.count / total_tests.count).to_f
+        (total_pass.count.to_f / total_tests.count.to_f) * 100
     end
 
     def total_tests
