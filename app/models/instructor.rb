@@ -12,27 +12,29 @@ class Instructor
         @@all
     end
 
-    def pass_student(student_name, test_name)
-        BoatingTest.all.select do |test|
-            if test.boating_test_name == test_name && test.student == student_name
-                # puts "It's Working!"
-                test.boating_test_status = "passed"
-            end
+    def pass_student(student, test_name)
+       need_to_pass = all_tests.find { |full_test| (full_test.student.first_name == student.first_name && full_test.boating_test_name == test_name) }
+        if need_to_pass
+            need_to_pass.boating_test_status = "passed"
+        else
+            return BoatingTest.new(student, test_name, "passed", self)
         end
+        need_to_pass
     end
 
-    # def pass_student(stud, tst_name)
-    #     BoatingTest.all.find do |tests|
-    #         if tests.test_name == tst_name
-    #             if tests.student == stud
-    #                 #puts "Runs correctly!"
-    #                 tests.test_status = "passed"
-    #                 #binding.pry
-    #             else
-    #                 BoatingTest.new(stud,tst_name,"passed", self)
-    #             end
-    #         end
-    #     end
-    # end
-    
+    def fail_student(student, test_name)
+        need_to_fail = all_tests.find { |full_test| (full_test.student.first_name == student.first_name && full_test.boating_test_name == test_name) }
+         if need_to_fail
+             need_to_fail.boating_test_status = "failed"
+         else
+             return BoatingTest.new(student, test_name, "failed", self)
+         end
+         need_to_fail
+     end
+
+    def all_tests
+        BoatingTest.all.select do |test|
+            test.instructor == self
+        end
+    end
 end
